@@ -19,14 +19,28 @@ const foods = ref([
   { name: '居酒屋', emoji: '🍶' },
   { name: 'ファミレス', emoji: '🍽️' }
 ])
+const pickedFoodIndex = ref(0)
+const newFoodIndex = ref(1)
+function pickedFood(index) {
+  pickedFoodIndex.value = index
+  newFoodIndex.value++
+}
 </script>
 
 <template>
   <main>
     <h1 class="title">今日何食べる？</h1>
-    <FoodfCard :name="foods[0].name" :emoji="foods[0].emoji" />
+    <FoodfCard
+      :name="foods[pickedFoodIndex].name"
+      :emoji="foods[pickedFoodIndex].emoji"
+      @click="pickedFood(pickedFoodIndex)"
+    />
     <p>VS</p>
-    <FoodfCard :name="foods[1].name" :emoji="foods[1].emoji" />
+    <FoodfCard
+      :name="foods[newFoodIndex].name"
+      :emoji="foods[newFoodIndex].emoji"
+      @click="pickedFood(newFoodIndex)"
+    />
   </main>
 </template>
 
