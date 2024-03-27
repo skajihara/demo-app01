@@ -35,12 +35,14 @@ function pickedFood(index) {
       :emoji="foods[pickedFoodIndex].emoji"
       @click="pickedFood(pickedFoodIndex)"
     />
-    <p>VS</p>
-    <FoodfCard
-      :name="foods[newFoodIndex].name"
-      :emoji="foods[newFoodIndex].emoji"
-      @click="pickedFood(newFoodIndex)"
-    />
+    <template v-if="newFoodIndex < foods.length">
+      <p>VS</p>
+      <FoodfCard
+        :name="foods[newFoodIndex].name"
+        :emoji="foods[newFoodIndex].emoji"
+        @click="pickedFood(newFoodIndex)"
+      />
+    </template>
   </main>
 </template>
 
